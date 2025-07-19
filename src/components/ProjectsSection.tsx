@@ -4,22 +4,22 @@ export const ProjectsSection = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const projects = [{
     id: 1,
-    title: 'AI-Powered Medical Image Analysis',
-    description: 'Developed a deep learning system for automated detection of abnormalities in X-ray images with 94% accuracy.',
-    image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-    technologies: ['Python', 'TensorFlow', 'OpenCV'],
-    category: 'AI',
-    github: '#',
-    demo: '#'
+    title: 'Credit Union Youth Development Program',
+    description: 'Expanded the customer base for farmers by building fruit sales website that connects farmers with local consumers, promoting sustainable agriculture and healthy eating.',
+    image: './../../assets/Credit.png',
+    technologies: ['Html', 'CSS','Bootstrap4'],
+    category: 'web',
+    github: 'https://github.com/katydu/Farm-Website',
+    demo: 'https://katydu.github.io/Farm-Website/index.html'
   }, {
     id: 2,
-    title: 'Real-time Data Processing Pipeline',
-    description: 'Built a scalable system for processing and analyzing streaming data using Apache Kafka and Spark.',
+    title: 'Library Management System',
+    description: 'Built a scalable system for managing library operations, including adding new books, searching books and deleting books functionality.',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-    technologies: ['Scala', 'Kafka', 'Spark', 'AWS'],
+    technologies: ['Html', 'JavaScript', 'Local Storage', 'Kendo UI'],
     category: 'data-analytics',
-    github: '#',
-    demo: '#'
+    github: 'https://github.com/katydu/library-management-system',
+    demo: 'https://katydu.github.io/library-management-system/'
   }, {
     id: 3,
     title: 'Smart Campus Mobile App',
