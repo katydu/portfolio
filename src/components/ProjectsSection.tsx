@@ -63,7 +63,9 @@ export const ProjectsSection = () => {
           and problem-solving abilities.
         </p>
         <div className="flex justify-center mb-8 space-x-2 overflow-x-auto pb-2">
-          {filters.map(filter => <button key={filter.id} onClick={() => setActiveFilter(filter.id)} className={`px-4 py-2 rounded-full ${activeFilter === filter.id ? 'bg-blue-600 text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} transition-colors`}>
+          {filters.map(filter => <button key={filter.id} onClick={() => setActiveFilter(filter.id)} className={`px-4 py-2 rounded-full ${activeFilter === filter.id ? 'text-white' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'} transition-colors`} style={activeFilter === filter.id ? {
+          backgroundColor: '#FAD'
+        } : {}}>
               {filter.label}
             </button>)}
         </div>
@@ -78,16 +80,18 @@ export const ProjectsSection = () => {
                 </h3>
                 <p className="text-gray-600 mb-4">{project.description}</p>
                 <div className="flex flex-wrap gap-2 mb-4">
-                  {project.technologies.map(tech => <span key={tech} className="bg-blue-50 text-blue-700 px-2 py-1 rounded text-xs">
+                  {project.technologies.map(tech => <span key={tech} className="bg-pink-50 px-2 py-1 rounded text-xs" style={{
+                color: '#FAD'
+              }}>
                       {tech}
                     </span>)}
                 </div>
                 <div className="flex space-x-4">
-                  <a href={project.github} className="flex items-center text-gray-700 hover:text-blue-600 transition-colors" target="_blank" rel="noopener noreferrer">
+                  <a href={project.github} className="flex items-center text-gray-700 hover:text-pink-500 transition-colors" target="_blank" rel="noopener noreferrer">
                     <GithubIcon size={18} className="mr-1" />
                     <span>Code</span>
                   </a>
-                  <a href={project.demo} className="flex items-center text-gray-700 hover:text-blue-600 transition-colors" target="_blank" rel="noopener noreferrer">
+                  <a href={project.demo} className="flex items-center text-gray-700 hover:text-pink-500 transition-colors" target="_blank" rel="noopener noreferrer">
                     <ExternalLinkIcon size={18} className="mr-1" />
                     <span>Live Demo</span>
                   </a>
@@ -96,7 +100,9 @@ export const ProjectsSection = () => {
             </div>)}
         </div>
         <div className="text-center mt-10">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center text-blue-600 hover:text-blue-700">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center hover:text-pink-500" style={{
+          color: '#FAD'
+        }}>
             <span>View more projects on GitHub</span>
             <ExternalLinkIcon size={18} className="ml-1" />
           </a>

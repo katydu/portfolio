@@ -4,16 +4,16 @@ export const SkillsSection = () => {
     name: 'Python',
     level: 90
   }, {
-    name: 'TensorFlow/PyTorch',
+    name: 'JavaScript',
     level: 85
   }, {
-    name: 'JavaScript/TypeScript',
+    name: 'TypeScript',
     level: 80
   }, {
     name: 'React',
     level: 75
   }, {
-    name: 'Java',
+    name: 'Node.js',
     level: 70
   }, {
     name: 'SQL/NoSQL',
@@ -25,7 +25,7 @@ export const SkillsSection = () => {
     name: 'Docker',
     level: 60
   }];
-  const softSkills = ['Problem Solving', 'Research', 'Technical Writing', 'Team Leadership', 'Project Management', 'Public Speaking', 'Data Analysis', 'Critical Thinking'];
+  const softSkills = ['Problem Solving', 'Technical Writing', 'Team Leadership', 'Project Management', 'Public Speaking', 'Data Analysis', 'Critical Thinking'];
   return <section id="skills" className="py-16 bg-gray-50 px-4">
       <div className="container mx-auto">
         <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">
@@ -47,8 +47,9 @@ export const SkillsSection = () => {
                     </span>
                   </div>
                   <div className="w-full bg-gray-200 rounded-full h-2">
-                    <div className="bg-blue-600 h-2 rounded-full" style={{
-                  width: `${skill.level}%`
+                    <div className="h-2 rounded-full" style={{
+                  width: `${skill.level}%`,
+                  backgroundColor: '#FAD'
                 }}></div>
                   </div>
                 </div>)}
@@ -59,18 +60,20 @@ export const SkillsSection = () => {
               Soft Skills
             </h3>
             <div className="flex flex-wrap gap-2">
-              {softSkills.map(skill => <span key={skill} className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm">
+              {softSkills.map(skill => <span key={skill} className="bg-pink-100 px-3 py-1 rounded-full text-sm" style={{
+              color: '#FF8DA1'
+            }}>
                   {skill}
                 </span>)}
             </div>
-            <div className="mt-8 bg-blue-50 p-6 rounded-lg">
+            <div className="mt-8 bg-pink-50 p-6 rounded-lg">
               <h4 className="text-xl font-semibold mb-4 text-gray-800">
                 Certifications
               </h4>
               <ul className="space-y-2 text-gray-600">
-                <li>• Google TensorFlow Developer Certificate</li>
-                <li>• AWS Certified Machine Learning – Specialty</li>
-                <li>• Microsoft Certified: Azure AI Engineer Associate</li>
+                <li>• Certified Information Security Engineer - Associate Level</li>
+                {/* <li>• AWS Certified Machine Learning – Specialty</li>
+                <li>• Microsoft Certified: Azure AI Engineer Associate</li> */}
               </ul>
             </div>
           </div>
