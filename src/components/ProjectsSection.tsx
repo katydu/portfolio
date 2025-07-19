@@ -8,7 +8,7 @@ export const ProjectsSection = () => {
     description: 'Developed a deep learning system for automated detection of abnormalities in X-ray images with 94% accuracy.',
     image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
     technologies: ['Python', 'TensorFlow', 'OpenCV'],
-    category: 'machine-learning',
+    category: 'AI',
     github: '#',
     demo: '#'
   }, {
@@ -17,7 +17,7 @@ export const ProjectsSection = () => {
     description: 'Built a scalable system for processing and analyzing streaming data using Apache Kafka and Spark.',
     image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
     technologies: ['Scala', 'Kafka', 'Spark', 'AWS'],
-    category: 'big-data',
+    category: 'data-analytics',
     github: '#',
     demo: '#'
   }, {
@@ -26,7 +26,7 @@ export const ProjectsSection = () => {
     description: 'Created a mobile application that helps students navigate campus, find study spaces, and connect with peers.',
     image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
     technologies: ['React Native', 'Firebase', 'Node.js'],
-    category: 'web-mobile',
+    category: 'web',
     github: '#',
     demo: '#'
   }, {
@@ -35,7 +35,7 @@ export const ProjectsSection = () => {
     description: 'Implemented NLP models to analyze customer reviews and extract sentiment and key product insights.',
     image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
     technologies: ['Python', 'NLTK', 'BERT', 'Flask'],
-    category: 'machine-learning',
+    category: 'AI',
     github: '#',
     demo: '#'
   }];
@@ -43,14 +43,17 @@ export const ProjectsSection = () => {
     id: 'all',
     label: 'All Projects'
   }, {
-    id: 'machine-learning',
-    label: 'Machine Learning'
+    id: 'AI',
+    label: 'AI'
   }, {
-    id: 'web-mobile',
-    label: 'Web & Mobile'
+    id: 'web',
+    label: 'Web'
   }, {
-    id: 'big-data',
-    label: 'Big Data'
+    id: 'data-analytics',
+    label: 'Data Analytics'
+  },{
+    id: 'database',
+    label: 'Database'
   }];
   const filteredProjects = activeFilter === 'all' ? projects : projects.filter(project => project.category === activeFilter);
   return <section id="projects" className="py-16 bg-white px-4">
