@@ -7,7 +7,7 @@ export const ProjectsSection = () => {
     title: 'Credit Union Youth Development Program',
     description: 'Expanded the customer base for farmers by building fruit sales website that connects farmers with local consumers, promoting sustainable agriculture and healthy eating.',
     image: './../../assets/Credit.png',
-    technologies: ['Html', 'CSS','Bootstrap4'],
+    technologies: ['HTML', 'CSS','Bootstrap4'],
     category: 'web',
     github: 'https://github.com/katydu/Farm-Website',
     demo: 'https://katydu.github.io/Farm-Website/index.html'
@@ -15,29 +15,44 @@ export const ProjectsSection = () => {
     id: 2,
     title: 'Library Management System',
     description: 'Built a scalable system for managing library operations, including adding new books, searching books and deleting books functionality.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-    technologies: ['Html', 'JavaScript', 'Local Storage', 'Kendo UI'],
-    category: 'data-analytics',
+    image: './../../assets/Library.png',
+    technologies: ['HTML', 'JavaScript', 'Local Storage', 'Kendo UI'],
+    category: 'web',
     github: 'https://github.com/katydu/library-management-system',
     demo: 'https://katydu.github.io/library-management-system/'
   }, {
     id: 3,
-    title: 'Smart Campus Mobile App',
-    description: 'Created a mobile application that helps students navigate campus, find study spaces, and connect with peers.',
-    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-    technologies: ['React Native', 'Firebase', 'Node.js'],
-    category: 'web',
-    github: '#',
-    demo: '#'
+    title: 'WolfJobs - On Campus Job Finder',
+    description: 'Enhanced the job platform with direct chat between applicants and recruiters, AI-driven question suggestions based on job descriptions, unique email validation for users, and a complete UI redesign for a sleeker, user-friendly experience.',
+    image: './../../assets/WolfJob.png',
+    technologies: ['React.js', 'Node.js', 'Express.js','MongoDB'],
+    category: 'contributions',
+    github: 'https://github.com/katydu/WolfJobs'
   }, {
     id: 4,
-    title: 'Sentiment Analysis for Product Reviews',
-    description: 'Implemented NLP models to analyze customer reviews and extract sentiment and key product insights.',
-    image: 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-    technologies: ['Python', 'NLTK', 'BERT', 'Flask'],
-    category: 'AI',
-    github: '#',
-    demo: '#'
+    title: 'Slack Point',
+    description: 'Enhanced SlackPoint productivity platform with gamified task completion, automated point tracking, and competitive leaderboards integrated directly into Slack. Implemented advanced features including cross-team task assignment, Pomodoro timer integration for productivity optimization, and a pet raising gamification system that significantly improved user retention and team motivation.',
+    image: './../../assets/slack.png',
+    technologies: ['Python', 'Flask', 'PostgreSQL', 'Ngrok'],
+    category: 'contributions',
+    github: 'https://github.com/katydu/slackpoint-v4'
+  },{
+    id: 5,
+    title: 'Galaxian',
+    description: 'Developed a WebGL-based 3D space shooter game inspired by the classic arcade game Galaxian.',
+    image: './../../assets/galaxian.png',
+    technologies: ['WebGL', 'JavaScript', 'HTML','CSS'],
+    category: 'games',
+    github: 'https://github.com/katydu/Galaxian',
+    demo: 'https://katydu.github.io/Galaxian/'
+  },{
+    id: 6,
+    title: 'Warehouse Store Database Management System',
+    description: 'Developed a database management system simulating operations of a warehouse club like Costco. Implemented with Java and JDBC to connect to a MariaDB database, featuring separate Java files for each operation (create, read, update, delete). Built a command-line main menu interface using Eclipse IDE to execute these operations interactively, resembling API calls for real-time database access.',
+    image: './../../assets/mariadb.jpg',
+    technologies: ['Java', 'JDBC', 'MariaDB'],
+    category: 'database',
+    github: '#'
   }];
   const filters = [{
     id: 'all',
@@ -54,6 +69,12 @@ export const ProjectsSection = () => {
   },{
     id: 'database',
     label: 'Database'
+  }, {
+    id: 'contributions',
+    label: 'Contributions'
+  },{
+    id: 'games',
+    label: 'Games'
   }];
   const filteredProjects = activeFilter === 'all' ? projects : projects.filter(project => project.category === activeFilter);
   return <section id="projects" className="py-16 bg-white px-4">
@@ -94,10 +115,13 @@ export const ProjectsSection = () => {
                     <GithubIcon size={18} className="mr-1" />
                     <span>Code</span>
                   </a>
+                  {/*Check if demo link exists before rendering*/}
+                  {project.demo && (
                   <a href={project.demo} className="flex items-center text-gray-700 hover:text-pink-500 transition-colors" target="_blank" rel="noopener noreferrer">
                     <ExternalLinkIcon size={18} className="mr-1" />
                     <span>Live Demo</span>
                   </a>
+                  )}
                 </div>
               </div>
             </div>)}

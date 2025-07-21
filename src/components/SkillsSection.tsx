@@ -2,27 +2,27 @@ import React from 'react';
 export const SkillsSection = () => {
   const technicalSkills = [{
     name: 'Python',
-    level: 90
+    level: 85
   }, {
     name: 'JavaScript',
     level: 85
   }, {
-    name: 'TypeScript',
+    name: 'SQL',
     level: 80
   }, {
-    name: 'React',
+    name: 'Docker',
     level: 75
   }, {
-    name: 'Node.js',
+    name: 'React.js',
     level: 70
   }, {
-    name: 'SQL/NoSQL',
-    level: 75
+    name: 'Typescript',
+    level: 70
   }, {
     name: 'C/C++',
     level: 65
   }, {
-    name: 'Docker',
+    name: 'Node.js',
     level: 60
   }];
   const softSkills = ['Problem Solving', 'Technical Writing', 'Team Leadership', 'Project Management', 'Public Speaking', 'Data Analysis', 'Critical Thinking'];
