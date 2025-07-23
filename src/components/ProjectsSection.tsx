@@ -52,7 +52,7 @@ export const ProjectsSection = () => {
     image: './../../assets/mariadb.jpg',
     technologies: ['Java', 'JDBC', 'MariaDB'],
     category: 'database',
-    github: '#'
+    github: 'https://github.com/katydu/Warehouse-Store-Database-Management-System'
   }];
   const filters = [{
     id: 'all',
@@ -127,7 +127,7 @@ export const ProjectsSection = () => {
             </div>)}
         </div>
         <div className="text-center mt-10">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="inline-flex items-center hover:text-pink-500" style={{
+          <a href="https://github.com/katydu?tab=repositories" target="_blank" rel="noopener noreferrer" className="inline-flex items-center hover:text-pink-500" style={{
           color: '#FAD'
         }}>
             <span>View more projects on GitHub</span>
