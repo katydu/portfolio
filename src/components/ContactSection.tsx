@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MailIcon, PhoneIcon, MapPinIcon, SendIcon } from 'lucide-react';
+import emailjs from 'emailjs-com';
 export const ContactSection = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -9,7 +10,17 @@ export const ContactSection = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState('');
-  const handleChange = e => {
+  const [messageType, setMessageType] = useState<'success' | 'error'>('success');
+
+  // Initialize EmailJS
+  useEffect(() => {
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    if (publicKey && !publicKey.includes('YOUR_PUBLIC_KEY')) {
+      emailjs.init(publicKey);
+      console.log('EmailJS initialized with public key');
+    }
+  }, []);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const {
       name,
       value
@@ -19,12 +30,46 @@ export const ContactSection = () => {
       [name]: value
     }));
   };
-  const handleSubmit = e => {
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
+    setSubmitMessage('');
+
+    try {
+      // EmailJS configuration - these should be set in your .env file
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID';
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID';
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY';
+
+      // Debug logging
+      console.log('EmailJS Config:', {
+        serviceId: serviceId?.substring(0, 8) + '...',
+        templateId: templateId?.substring(0, 8) + '...',
+        publicKey: publicKey?.substring(0, 8) + '...'
+      });
+
+      // Validate configuration
+      if (serviceId.includes('YOUR_SERVICE_ID') || templateId.includes('YOUR_TEMPLATE_ID') || publicKey.includes('YOUR_PUBLIC_KEY')) {
+        throw new Error('EmailJS credentials are not properly configured. Please check your .env file.');
+      }
+
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to_name: 'Min-Ting Tu',
+        to_email: 'mintingtu0919@gmail.com',
+        reply_to: formData.email
+      };
+
+      console.log('Sending email with params:', templateParams);
+
+      const result = await emailjs.send(serviceId, templateId, templateParams);
+      console.log('EmailJS Success:', result);
+      
+      setMessageType('success');
       setSubmitMessage('Thank you for your message! I will get back to you soon.');
       setFormData({
         name: '',
@@ -32,11 +77,35 @@ export const ContactSection = () => {
         subject: '',
         message: ''
       });
-      // Clear success message after 5 seconds
+    } catch (error: any) {
+      console.error('EmailJS Error:', error);
+      setMessageType('error');
+      
+      // Provide more specific error messages
+      let errorMessage = 'Sorry, there was an error sending your message. ';
+      
+      if (error.message?.includes('credentials')) {
+        errorMessage += 'Configuration issue detected. Please contact the site administrator.';
+      } else if (error.status === 400) {
+        errorMessage += 'Invalid request. Please check all fields are filled correctly.';
+      } else if (error.status === 401) {
+        errorMessage += 'Authentication failed. Please try again later.';
+      } else if (error.status === 403) {
+        errorMessage += 'Service access denied. Please try again later.';
+      } else if (error.text?.includes('network')) {
+        errorMessage += 'Network error. Please check your internet connection.';
+      } else {
+        errorMessage += 'Please try again or contact me directly at mtu@ncsu.edu.';
+      }
+      
+      setSubmitMessage(errorMessage);
+    } finally {
+      setIsSubmitting(false);
+      // Clear message after 5 seconds
       setTimeout(() => {
         setSubmitMessage('');
       }, 5000);
-    }, 1000);
+    }
   };
   return <section id="contact" className="py-16 bg-white dark:bg-gray-800 px-4">
       <div className="container mx-auto">
@@ -58,7 +127,7 @@ export const ContactSection = () => {
                   <h3 className="text-lg font-semibold text-gray-800 dark:text-white mb-1">
                     Email
                   </h3>
-                  <a href="mailto:alex.chen@example.com" className="text-pink-400 dark:text-pink-300 hover:underline">
+                  <a href="mailto:mtu@ncsu.edu" className="text-pink-400 dark:text-pink-300 hover:underline">
                     mtu@ncsu.edu
                   </a>
                 </div>
@@ -108,7 +177,11 @@ export const ContactSection = () => {
           </div>
           <div className="md:w-2/3 md:pl-8">
             <form onSubmit={handleSubmit} className="bg-gray-50 dark:bg-gray-700 p-6 rounded-lg">
-              {submitMessage && <div className="mb-6 p-4 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 rounded-md">
+              {submitMessage && <div className={`mb-6 p-4 rounded-md ${
+                messageType === 'success' 
+                  ? 'bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300' 
+                  : 'bg-red-100 dark:bg-red-900 text-red-700 dark:text-red-300'
+              }`}>
                   {submitMessage}
                 </div>}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
