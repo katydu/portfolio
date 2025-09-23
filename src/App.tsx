@@ -9,7 +9,7 @@ import { KnowledgeSection } from './components/KnowledgeSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 export function App() {
-  return <div className="font-sans bg-white">
+  return <div className="dark font-sans bg-white dark:bg-gray-900 text-gray-900 dark:text-white">
       <Header />
       <main>
         <HeroSection />
@@ -17,7 +17,6 @@ export function App() {
         <SkillsSection />
         <ProjectsSection />
         <EducationSection />
-        <KnowledgeSection />
         <ContactSection />
       </main>
       <Footer />
